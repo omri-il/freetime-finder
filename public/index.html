@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>מתי נפגשים? — Freetime Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>מתי נפגשים?</h1>
+      <p class="tagline">כלי פשוט לתיאום זמן עבודה משותף — בחרו מתי אתם פנויים, וראו איפה כולם חופפים.</p>
+    </header>
+
+    <form id="create-form" class="card">
+      <label class="field">
+        <span>שם האירוע</span>
+        <input type="text" id="title" required maxlength="120" placeholder="עבודה משותפת" autocomplete="off">
+      </label>
+
+      <fieldset class="field mode">
+        <legend>סוג האירוע</legend>
+        <label class="radio">
+          <input type="radio" name="mode" value="recurring" checked>
+          <span>שבועי קבוע (כל שבוע אותם ימים)</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="mode" value="specific">
+          <span>תאריכים מסוימים</span>
+        </label>
+      </fieldset>
+
+      <div id="recurring-fields" class="field">
+        <span class="field-label">בחרו ימים</span>
+        <div class="days-row" id="days-picker">
+          <label><input type="checkbox" value="0" checked><span>ראשון</span></label>
+          <label><input type="checkbox" value="1" checked><span>שני</span></label>
+          <label><input type="checkbox" value="2" checked><span>שלישי</span></label>
+          <label><input type="checkbox" value="3" checked><span>רביעי</span></label>
+          <label><input type="checkbox" value="4" checked><span>חמישי</span></label>
+          <label><input type="checkbox" value="5"><span>שישי</span></label>
+          <label><input type="checkbox" value="6"><span>שבת</span></label>
+        </div>
+      </div>
+
+      <div id="specific-fields" class="field hidden">
+        <div class="row">
+          <label class="field grow">
+            <span>מתאריך</span>
+            <input type="date" id="start-date">
+          </label>
+          <label class="field grow">
+            <span>עד תאריך</span>
+            <input type="date" id="end-date">
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="field grow">
+          <span>שעת התחלה</span>
+          <input type="number" id="start-hour" min="0" max="23" value="8">
+        </label>
+        <label class="field grow">
+          <span>שעת סיום</span>
+          <input type="number" id="end-hour" min="1" max="24" value="20">
+        </label>
+        <label class="field grow">
+          <span>אורך משבצת</span>
+          <select id="slot-minutes">
+            <option value="15">15 דקות</option>
+            <option value="30" selected>30 דקות</option>
+            <option value="60">שעה</option>
+          </select>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-primary">צור אירוע</button>
+      <p id="error" class="error" role="alert" hidden></p>
+    </form>
+
+    <footer class="footnote">
+      בנוי על ידי <a href="https://omri-iram.co.il">עומרי אירם</a> · קוד פתוח ב-<a href="https://github.com/omri-il/freetime-finder">GitHub</a>
+    </footer>
+  </main>
+  <script src="/js/create.js"></script>
+</body>
+</html>

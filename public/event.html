@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <title>אירוע — Freetime Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="event-page">
+  <div id="login-modal" class="modal-backdrop">
+    <form id="login-form" class="modal card">
+      <h2 id="event-title">טוען…</h2>
+      <p class="muted">הקלידו את שמכם כדי לסמן את הזמנים הפנויים שלכם.</p>
+      <label class="field">
+        <span>שם</span>
+        <input type="text" id="login-name" required maxlength="60" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>סיסמה (לא חובה — נועלת את השם שלכם)</span>
+        <input type="password" id="login-password" maxlength="120" autocomplete="off">
+      </label>
+      <button type="submit" class="btn-primary">המשך</button>
+      <p id="login-error" class="error" role="alert" hidden></p>
+    </form>
+  </div>
+
+  <main id="app" class="container hidden">
+    <header class="event-header">
+      <div>
+        <h1 id="event-h1"></h1>
+        <p id="event-subtitle" class="muted"></p>
+      </div>
+      <div class="event-actions">
+        <button id="share-btn" class="btn-ghost" type="button">📤 שתף קישור</button>
+        <button id="logout-btn" class="btn-ghost" type="button">החלף שם</button>
+      </div>
+    </header>
+
+    <div class="view-toggle" role="tablist">
+      <button id="tab-mine" class="tab active" role="tab" aria-selected="true">המסך שלי</button>
+      <button id="tab-group" class="tab" role="tab" aria-selected="false">תצוגה קבוצתית</button>
+    </div>
+
+    <div id="grid-host" class="grid-host"></div>
+
+    <aside class="participants card">
+      <h3>משתתפים (<span id="p-count">0</span>)</h3>
+      <ul id="participants-list"></ul>
+    </aside>
+
+    <p id="status" class="status muted" aria-live="polite"></p>
+
+    <footer class="footnote">
+      <a href="/">צרו אירוע חדש</a>
+    </footer>
+  </main>
+
+  <script src="/js/grid.js"></script>
+  <script src="/js/event.js"></script>
+</body>
+</html>
